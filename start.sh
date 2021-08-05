@@ -3,12 +3,13 @@ user=$USER
 uid=$(id -u $USER)
 group=$(id -ng $USER)
 gid=$(id -g $USER)
+tz=$(readlink /etc/localtime)
 name=docker-dev
 
 state=$(docker container inspect -f '{{.State.Running}}' $name)
 if [ "$state" = "" ];
 then
-	sudo docker run -it -p 2222:22 -e user="$user" -e uid="$uid" -e group="$group" -e gid="$gid" --name $name -v $HOME:$HOME docker-dev
+	sudo docker run -it -p 2222:22 -e user="$user" -e uid="$uid" -e group="$group" -e gid="$gid" -e tz="$tz" --name $name -v $HOME:$HOME docker-dev
 elif [ "$state" = "false" ];
 then
 	sudo docker start $name
