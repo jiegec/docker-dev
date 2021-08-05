@@ -1,13 +1,14 @@
 #!/bin/bash
 user=$USER
 uid=$(id -u $USER)
-gid=$(id -G $USER)
+group=$(id -ng $USER)
+gid=$(id -g $USER)
 name=docker-dev
 
 state=$(docker container inspect -f '{{.State.Running}}' $name)
 if [ "$state" = "" ];
 then
-	sudo docker run -it -e user=$user -e uid=$uid -e gid="$gid" --name $name -v $HOME:$HOME docker-dev
+	sudo docker run -it -e user="$user" -e uid="$uid" -e group="$group" -e gid="$gid" --name $name -v $HOME:$HOME docker-dev
 elif [ "$state" = "false" ];
 then
 	sudo docker start $name
