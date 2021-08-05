@@ -9,6 +9,11 @@ Usage:
 
 What's included:
 
-1. Common packages: compilers, shells, utilities
-2. SSH server: for remote access on port 2222 with password authentication disabled
+1. Common packages: compilers, shells, utilities.
+2. SSH server: for remote access on port 2222 with password authentication disabled.
 3. User and group permission sync: the user and group remain the same as host.
+
+Caveats:
+
+1. You need to remove and rebuild the image if Dockerfile is changed.
+2. If you quit the attched session, the container will stop.
