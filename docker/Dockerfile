@@ -9,7 +9,7 @@ RUN apt install -y golang-go openjdk-11-jdk
 RUN apt install -y rustc cargo
 RUN apt install -y nodejs npm
 RUN apt install -y meson cmake autoconf automake
-RUN apt install -y htop glances iftop lsof strace ncdu
+RUN apt install -y htop iftop lsof strace ncdu
 RUN apt install -y python3-pip python3-matplotlib
 RUN apt install -y vim fish zsh clang-format git unar valgrind linux-base time numactl
 RUN apt install -y openmpi-bin
